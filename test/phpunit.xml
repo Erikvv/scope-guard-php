@@ -1,0 +1,7 @@
+<phpunit bootstrap="./autoload.php">
+  <testsuites>
+    <testsuite name="scope-guard">
+      <directory>.</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>

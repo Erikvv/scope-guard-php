@@ -1,0 +1,7 @@
+{
+	"name": "scope-guard",
+	"autoload": {
+		"psr-4": { "ScopeGuard\\": "." }
+	}
+}
+	
