@@ -10,6 +10,8 @@ You can differentiate between code that should be executed
 * when an exception is thrown (onFailure)
 * when the scope is left sucessfully (onSuccess)
 
+## Example
+
 ```php
 $scope = new ScopeGuard;
 
@@ -40,3 +42,11 @@ $scope->markSuccessfull();
 Obviously your logic will be different depending on the structure of your application and the requirements.
 
 Probably you will find onFailure the most useful for doing rollbacks. OnSuccess will generally not be used because your normal code is the success case, but it may help to group some statements more logically. OnExit can be used for something like cleanup which must be done regardless of what the eventual outcome of the script was.
+
+## Todo
+
+A more succint example would be nice for those not so familiar with the idiom.
+
+It would be nice to pass the current exception to the onFailure handler, but the PHP engine does not currently supply that information.
+
+Some might find the need to remove handlers.
