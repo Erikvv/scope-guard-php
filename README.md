@@ -1,16 +1,16 @@
 
-# ScopeGuard for PHP, easy exception-safe transactions
+# ScopeGuard for PHP
 
 This is a PHP implementation of the ScopeGuard idiom.
 
-You can use this whenever you want to schedule code to run on the end of a scope. If you are mainly using exceptions the readability of some pieces of code can improve greatly.
+You can use this whenever you want to schedule code to run on the end of a scope. If you are already mainly using exceptions the readability of some pieces of code can improve greatly.
 
 You can differentiate between code that should be executed
 * always (onExit)
 * when an exception is thrown (onFailure)
 * when the scope is left sucessfully (onSuccess)
 
-```
+```php
 $scope = new ScopeGuard;
 
 $scope->onFailure(function($ex) { error_log($ex); }); 
