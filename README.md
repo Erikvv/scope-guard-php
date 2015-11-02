@@ -13,7 +13,9 @@ You can differentiate between code that should be executed
 ## Example
 
 ```php
-$scope = new ScopeGuard;
+use ScopeGuard\Scope;
+
+$scope = new Scope;
 
 $scope->onFailure(function($ex) { error_log($ex); }); 
 
@@ -36,7 +38,7 @@ $mailServer->sendConfirmation(salesEntry);
 
 // this makes sure the success handlers are called. 
 // any other path leads to the failure handlers being called
-$scope->markSuccessfull(); 
+$scope->markSuccessful(); 
 ```
 
 Obviously your logic will be different depending on the structure of your application and the requirements.
