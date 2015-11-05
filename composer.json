@@ -1,6 +1,6 @@
 {
 	"name": "scope-guard",
-	"description": "ScopeGuard provides better way to structure transactions and rollbacks",
+	"description": "ScopeGuard provides a better way to structure transactions and rollbacks",
 	"autoload": {
 		"psr-4": { "ScopeGuard\\": "." }
 	}

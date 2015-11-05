@@ -7,7 +7,7 @@ You can use this whenever you want to schedule code to run on the end of a scope
 
 You can differentiate between code that should be executed
 * always (onExit)
-* when an exception is thrown (onFailure)
+* when the scope is left early through an exception or early return (onFailure)
 * when the scope is left sucessfully (onSuccess)
 
 ## Example
@@ -34,8 +34,10 @@ Obviously your logic will be different depending on the structure of your applic
 
 Probably you will find onFailure the most useful for doing rollbacks. OnSuccess will generally not be used because your normal code is the success case, but it may help to group some statements more logically. OnExit can be used for something like cleanup which must be done regardless of what the eventual outcome of the script was.
 
+It is perfectly fine to use multiple Scope object at the same time.
+
 ## Todo
 
 More examples
 
-Some might find the need to remove handlers.
+Some might find the need to remove handlers or mark failure after marking success earlier.
