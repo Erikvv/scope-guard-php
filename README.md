@@ -1,5 +1,7 @@
 
+```
 composer require scope-guard/scope-guard dev-master
+```
 
 # ScopeGuard for PHP
 
