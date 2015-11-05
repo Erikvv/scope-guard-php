@@ -1,4 +1,6 @@
 
+composer require scope-guard/scope-guard dev-master
+
 # ScopeGuard for PHP
 
 This is a PHP implementation of the ScopeGuard idiom.
