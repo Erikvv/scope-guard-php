@@ -15,30 +15,19 @@ You can differentiate between code that should be executed
 ```php
 use ScopeGuard\Scope;
 
+$salesEntry = new SalesEntry;
+
 $scope = new Scope;
+$scope->onFailure(function use ($serviceDesk, $salesEntry) { $serviceDesk->alertRepresentative($salesEntry); }); 
 
-$scope->onFailure(function($ex) { error_log($ex); }); 
+/* more logic here */
 
-$salesEntry = $repository->addSalesEntry($data);
-$scope->onSuccess(function use ($repository, $salesEntry) { $repository->markFinalized($salesEntry); });
-
-// normal control flow is still usefull
-try {
-	$paymentProcessing->execute($salesEntry->paymentInfo);
-}
-catch (FraudException $ex) {
-	$fbi->alert($salesEntry);
-}
-
-// if we fail after this point, we want to alert a human agent to fix the situation
-$scope->onFailure(function() { $serviceDesk->alert($salesEntry); });
-
-$warehouse->sendPackage($salesEntry->order);
-$mailServer->sendConfirmation(salesEntry);
-
-// this makes sure the success handlers are called. 
+// this makes sure any success handlers are called. 
 // any other path leads to the failure handlers being called
 $scope->markSuccessful(); 
+
+// unset can manually trigger the handlers (taking into account the regular reference-counting semantics)
+unset($scope);
 ```
 
 Obviously your logic will be different depending on the structure of your application and the requirements.
@@ -47,8 +36,6 @@ Probably you will find onFailure the most useful for doing rollbacks. OnSuccess 
 
 ## Todo
 
-A more succint example would be nice for those not so familiar with the idiom.
-
-It would be nice to pass the current exception to the onFailure handler, but the PHP engine does not currently supply that information.
+More examples
 
 Some might find the need to remove handlers.
