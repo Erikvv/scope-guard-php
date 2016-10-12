@@ -51,14 +51,10 @@ $scope->markSuccessful();
 unset($scope);
 ```
 
-Obviously your logic will be different depending on the structure of your application and the requirements.
+Probably you will find onFailure the most useful for doing rollbacks, attaching more handlers as the script progresses, and entering the failure flow by throwing an exception. 
 
-Probably you will find onFailure the most useful for doing rollbacks. OnSuccess will generally not be used because your normal code is the success case, but it may help to group some statements more logically. OnExit can be used for something like cleanup which must be done regardless of what the eventual outcome of the script was.
+OnSuccess will generally not be used because your normal code is the success case, but it may help to group some statements more logically. 
+
+OnExit can be used for something like cleanup which must be done regardless of what the eventual outcome of the script was.
 
 It is perfectly fine to use multiple Scope object at the same time.
-
-## Todo
-
-More examples
-
-Some might find the need to remove handlers or mark failure after marking success earlier.
