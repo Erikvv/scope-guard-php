@@ -14,7 +14,24 @@ You can differentiate between code that should be executed
 * when the scope is left early through an exception or early return (onFailure)
 * when the scope is left sucessfully (onSuccess)
 
-## Example
+## Simplest example
+
+This closes a connection on scope exit. 
+
+```php
+use ScopeGuard\Scope;
+
+$connection = connect() 
+$scope = new Scope;
+$scope->onExit([$connection, 'disconnect']);
+
+/* do stuff with $connection */
+
+/* explicit or implicit return, ->disconnect() is called here */
+return;
+```
+
+## OnFailure example
 
 ```php
 use ScopeGuard\Scope;
