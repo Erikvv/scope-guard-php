@@ -8,6 +8,12 @@ class Scope
     private $failureHandlers = [];
     private $successHandlers = [];
     private $exitHandlers = [];
+    
+    public static function exit(callable $onExit): self {
+        $scope = new Scope();
+        $scope->onExit($onExit);
+        return $scope;
+    }
 
     public function markSuccessful() {
         $this->success = true;
